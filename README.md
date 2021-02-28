@@ -1,2 +1,2 @@
 # computerVisionPython
-Learning about computer vision using the popular modules opencv-python and face_recognition.
+Learning about computer vision using opencv-python, face_recognition and tensorflow's object detection API.
