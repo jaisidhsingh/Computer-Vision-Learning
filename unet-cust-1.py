@@ -8,9 +8,11 @@ from torch.utils.data import DataLoader, Dataset
 import matplotlib.pyplot as plt
 import torch.nn.functional as F
 import cv2
+import random
 
-
-img = Image.open("cat01.jpg") 
+# loading and preprocessing:
+img = Image.open("snow.jpg")
+ans = Image.open("snow-segm.png") 
 
 transform_img = T.Compose([
     T.Resize((32, 32)),
@@ -18,7 +20,12 @@ transform_img = T.Compose([
 
 img = transform_img(img)
 img = img.view((1, 3, 32, 32))
+ans = transform_img(ans)
+ans = ans.view((1, 3, 32, 32))
+
 print(img.shape)
+print(ans.shape)
+
 
 class Net(nn.Module):
 	def __init__(self):
@@ -34,12 +41,29 @@ class Net(nn.Module):
 		x = self.ups1(x)
 		x = self.ups1(x)
 		x = x.view((1, 3, 20, 20))
+		x = self.ups1(x)
+		x = F.relu(self.conv1(x))
+		x = F.relu(self.conv2(x))
 		return x
 
 net = Net()
-out = net.forward(img)
+criterion = nn.MSELoss()
+optimizer = torch.optim.SGD(net.parameters(), lr=0.01, momentum=0.9)
+
+for epoch in range(10):
+	runningLoss = 0.0
+	optimizer.zero_grad()
+	output = net(img)
+	loss = criterion(output, ans)
+	loss.backward()
+	optimizer.step()
+	runningLoss += loss.item()
+	print("Epoch: ", epoch, " Loss: ", runningLoss)
+
+
+out = net(img)
 out = out.detach().numpy()
-out = np.array(out).reshape(20, 20, 3)
+out = np.array(out).reshape((32, 32, 3))
 
 plt.figure()
 plt.imshow(out)
