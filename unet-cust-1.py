@@ -40,7 +40,6 @@ class Net(nn.Module):
 		x = self.pool(F.relu(self.conv2(x)))
 		x = self.ups1(x)
 		x = self.ups1(x)
-		x = x.view((1, 3, 20, 20))
 		x = self.ups1(x)
 		x = F.relu(self.conv1(x))
 		x = F.relu(self.conv2(x))
