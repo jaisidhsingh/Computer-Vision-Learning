@@ -8,6 +8,8 @@ from models import Unet
 from utils import get_loaders, save_predictions_as_imgs
 from metrics import check_accuracy
 
+#TRAINED FOR BINARY CLASS SEGMENTATION, ACCURACY AND SAVING IMPLEMENTED THUS
+
 # Hyperparameters 
 LEARNING_RATE = 1e-4
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
@@ -66,6 +68,9 @@ def main():
             ToTensorV2(),])
 
     model = Unet(in_channels=3, out_channels=1).to(DEVICE)
+    
+    # a binary CELoss is used with logits as we haven't passed the final convolution through a sigmoid
+    # for multi-class segmentation, cross entropy loss to be used
     loss_fn = nn.BCEWithLogitsLoss()
     optimizer = optim.Adam(model.parameters(), lr=LEARNING_RATE)
 
@@ -86,6 +91,7 @@ def main():
     check_accuracy(val_loader, model, device=DEVICE, MODEL=True)
     scaler = torch.cuda.amp.GradScaler()
 
+    # training can be done using simple pytorch methods as well, used tqdm for learning and testing
     for epoch in range(NUM_EPOCHS):
         train_fn(train_loader, model, optimizer, loss_fn, scaler)
 
