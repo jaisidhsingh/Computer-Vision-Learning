@@ -1,4 +1,4 @@
-# computerVisionPython
+# ComputerVision
 
 -> Implementaion of papers essential to computer vision
       -> UNET, YOLO, Pix2Pix
