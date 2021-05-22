@@ -1,6 +1,6 @@
-## ComputerVision
+# ComputerVision
 
-# Advanced Computer Visio Tasks
+## Advanced Computer Vision Tasks: 
 
 -> Implementaion of papers essential to computer vision
       -> UNET, YOLO, Pix2Pix
