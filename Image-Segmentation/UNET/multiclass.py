@@ -1,5 +1,6 @@
 import torch
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 # change final output with channels = number of classes to a 2D array with pixels corresponding to classes
@@ -35,3 +36,18 @@ def segmented2RGB(reference, image_shape, nc=21):
 
 	rgb = np.stack([r, g, b], axis=2)
 	return rgb
+
+# visualize output
+image = torch.rand((1, 21, 224, 224))
+out = class_wise_pixels(image)
+rgb = segmented2RGB(out, (224, 224))
+
+print(rgb)
+print(rgb.shape)
+print(np.unique(rgb))
+
+
+plt.figure()
+plt.imshow(rgb)
+plt.axis("off")
+plt.show()
