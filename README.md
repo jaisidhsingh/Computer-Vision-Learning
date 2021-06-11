@@ -2,7 +2,7 @@
 
 ## Advanced Computer Vision Tasks: 
 
-> Implementaion of papers essential to computer vision
+### Implementaion of papers essential to computer vision
 
       > UNET
       
@@ -11,6 +11,6 @@
       > Pix2Pix (to be pushed)
       
       
-> Tensorflow's Object Detection API exemplified
+### Tensorflow's Object Detection API exemplified
 
-> Facial recognition and detection using face_recognition and opencv
+### Facial recognition and detection using face_recognition and opencv
