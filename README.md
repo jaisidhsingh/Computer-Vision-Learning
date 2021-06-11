@@ -1,6 +1,4 @@
-# Computer-Vision
-
-## Advanced Computer Vision Tasks: 
+# Advanced Computer Vision Tasks: 
 
 ### Implementaion of papers essential to computer vision
 
