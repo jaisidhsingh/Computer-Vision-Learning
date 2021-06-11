@@ -1,4 +1,4 @@
-# ComputerVision
+# Computer-Vision
 
 ## Advanced Computer Vision Tasks: 
 
