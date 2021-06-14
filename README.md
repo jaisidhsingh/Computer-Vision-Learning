@@ -6,9 +6,9 @@
       
       > YOLO v1
       
-      > Pix2Pix (to be pushed)
+      > GANs
       
       
-### Tensorflow's Object Detection API exemplified
+### Tensorflow's Object Detection API example
 
 ### Facial recognition and detection using face_recognition and opencv
