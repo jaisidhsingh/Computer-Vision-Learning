@@ -11,7 +11,7 @@ class StandardGANLoss():
 
 
     def DiscLoss(self):
-        """Tip for Usage : 
+        """Tip for usage : 
 
            discLoss, fake = StandardGANLoss(...).DiscLoss()
            discLoss.backward(retain_graph=True)
@@ -35,9 +35,10 @@ class StandardGANLoss():
     
 
     def GenLoss(self, fake):
-        """Graph retention not needed here
-           max log(D(G(z))) is computationally better in implementation
-           (provided in the paper itself) than the proposed loss for 
+        """Graph retention not needed here.
+        
+           Maximizinng log(D(G(z))) is computationally better in implementation
+           (provided in the paper itself) than the original proposed loss for 
            Generator in the paper.
         """
 
