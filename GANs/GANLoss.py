@@ -8,6 +8,7 @@ class StandardGANLoss():
         self.z_dim = z_dim
         self.real = real
         self.criterion = criterion
+        self.batch_size = batch_size
 
 
     def DiscLoss(self):
@@ -22,10 +23,10 @@ class StandardGANLoss():
            training.
         """
     
-        noise = torch.randn((batch_size, self.z_dim))
+        noise = torch.randn((self.batch_size, self.z_dim))
         fake = self.gen(noise)
-        discReal = disc(real).view(-1)
-        discFake = disc(fake).view(-1)
+        discReal = self.disc(self.real).view(-1)
+        discFake = self.disc(fake).view(-1)
 
         # corresponds to maxinmising log(D(real)) [minimizing the negative]
         loss = self.criterion(discReal, torch.ones_like(discReal))
@@ -47,7 +48,3 @@ class StandardGANLoss():
         # corresponds to maximsing log(D(G(z))) [minizing the negative]
         loss = self.criterion(check, torch.ones_like(check))
         return loss
-
-
-        
-
