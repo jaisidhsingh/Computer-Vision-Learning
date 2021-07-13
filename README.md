@@ -2,11 +2,11 @@
 
 ### Implementaion of papers essential to computer vision
 
-      > UNET
-      
-      > YOLO v1
-      
-      > GANs
+> UNET
+
+> YOLO v1
+
+> GANs
       
       
 ### Tensorflow's Object Detection API example
